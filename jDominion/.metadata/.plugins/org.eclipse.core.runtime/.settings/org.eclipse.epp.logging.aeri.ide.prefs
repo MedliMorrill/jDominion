@@ -1,0 +1,10 @@
+anonymizeMessages=false
+anonymizeStackTraces=true
+configured=true
+eclipse.preferences.version=1
+reporterEmail=lvlegadrew@gmail.com
+reporterName=Andrew Morrill
+resetSendMode=KEEP
+resetSendModeOn=0
+sendMode=NOTIFY
+servers/org.eclipse.epp.logging.aeri.ide.server/configured=true
