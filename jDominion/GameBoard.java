@@ -402,7 +402,7 @@ public class GameBoard extends JPanel
 	//  would otherwise be impossible.
 
 	// Mock GameStartListener
-	public int gameStarter(int nP)
+	public void gameStarter(int nP)
 	{
 		// Initializes the selected players and sets up the game.
 	

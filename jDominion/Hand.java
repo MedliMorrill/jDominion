@@ -79,6 +79,26 @@ public class Hand
 	{
 		return playerHand[index + (scrollSelect * 5)];
 	}
+
+	// Recieves any card, mostly for testing
+	public Card getHandIndex(int index)
+	{
+		if (index < playerHand.length)
+		{
+			return playerHand[index];
+		}
+		return null;
+	}
+	// Removes any card, for testing
+	// Does not change the images, jUnit doesn't launch the program interface.
+	public void removeHandIndex(int index)
+	{
+		if (index < playerHand.length)
+		{
+			playerHand[index] = null;
+		}
+	}
+
 	// Removes card for discard or trash
 	public Card removeSelectedCard(int index)
 	{
@@ -165,7 +185,6 @@ public class Hand
 			playerHand[i] = temp[i];
 		}
 	}
-
 
 	// Only exicutes once, may be cleaned up before final verson as the Playerhand is null at this point
 	public void draw()
@@ -262,7 +281,6 @@ public class Hand
 		}
 	}
 
-
 	public static Image getScaledImage(Image image, int width, int height)
 	{
 	    BufferedImage resizedImg = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
@@ -294,48 +312,7 @@ public class Hand
 		return IMGSCALE;
 	}
 
-	// Events!
-	// public void addListeners()
-	// {
-	// 	selectListener = new MouseListener()
-	// 	{
-	// 		@Override
-	// 		public void mouseReleased(MouseEvent e) 
-	// 		{
-	// 			System.out.println("Released!");
-	// 		}
 
-	// 		@Override
-	// 		public void mousePressed(MouseEvent e) 
-	// 		{
-	// 			System.out.println("Pressed!");
-	// 		}
-
-	// 		@Override
-	// 		public void mouseExited(MouseEvent e) 
-	// 		{
-	// 			System.out.println("Exited!");
-	// 		}
-
-	// 		@Override
-	// 		public void mouseEntered(MouseEvent e) 
-	// 		{
-	// 			System.out.println("Entered!");
-	// 		}
-
-	// 		@Override
-	// 		public void mouseClicked(MouseEvent e) 
-	// 		{
-	// 			playerHand[0] = null;
-	// 			handImage[0] = new ImageIcon("Images/Empty.jpg");
-	// 			Object source = e.getSource();
-				
-	// 			System.out.println("Clicked" + e.getSource());
-
-	// 		}
-
-	// 	};
-	//}
 	public class SelectListener implements ActionListener
 	{
 		public void actionPerformed(ActionEvent event)

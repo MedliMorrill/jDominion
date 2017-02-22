@@ -29,7 +29,7 @@ public class Player extends JPanel
 		int countEstate = 0;
 		gen = new Random();
 
-		// verifies the startCards
+		//verifies the startCards
 		for (int i = 0; i < dr.length; i++)
 		{
 			if ("Estate" == dr[i].getName())
@@ -40,7 +40,7 @@ public class Player extends JPanel
 			{
 				countCopper++;
 			}
-			//sop("Draw Piles: " + dr[i].getName());
+			sop("Draw Piles: " + dr[i].getName());
 			
 		}
 		sop(" Copper: " + countCopper + "\n Estate: " + countEstate);
@@ -64,28 +64,6 @@ public class Player extends JPanel
 	// ***************
 	// Turn Mechanics!
 	// ***************
-
-	// Rewrite as separate turns.
-	// Probably going to writeinto GameBoard instead.
-	// Will still keep track of number of actionCount and buyCount
-	// public void turn()
-	// {
-	// 	// Player Action Turn
-	// 	while (actionCount > 0)
-	// 	{
-	// 		actionCount--;
-	// 	}
-	// 	// Player Buy Turn
-	// 	while (buyCount > 0)
-	// 	{
-	// 		buyCount--;
-	// 	}
-	// 	// Player Cleanup Phase
-	// 	hand.cleanup();
-	// 	drawCard(5);
-	// 	actionCount = 1;
-	// 	buyCount = 1;
-	// }
 
 	public int getActionCount()
 	{
@@ -125,7 +103,7 @@ public class Player extends JPanel
 		buyCount = 1;
 		// returns current hand to discard
 		discard(hand.cleanup());
-		drawCard(6);
+		drawCard(5);
 	}
 	public int getCoins()
 	{
@@ -135,7 +113,6 @@ public class Player extends JPanel
 	{
 		hand.setCoins(change);
 	}
-
 
 	// ***************************
 	// Card Mechanics and Methods!
@@ -335,7 +312,20 @@ public class Player extends JPanel
 			public void mouseClicked(MouseEvent e){}
 		};
 	}
+	// A card from 0 to 4. 
+	public void selectCard(int sC)
+	{
+		selectCard = sC;
+	}
+	// Any int
+	public void selectHandIndex(int sHC)
+	{
+		hand.getHandIndex(sHC);
+	}
+	public void removeHandCard()
+	{
 
+	}
 	// Makes Life Easier
 	public static void sop(String words)
 	{
@@ -345,10 +335,6 @@ public class Player extends JPanel
 	public void paintComponent(Graphics page)
 	{
 		super.paintComponent(page);
-		//page.drawCircle(100, 100);
 		page.fillRect(selectX, selectY-10, 150, 350);
-		//Rectangle r = new Rectangle(xPos,yPos,width,height);
-		//paint();
 	}	
-
 }

@@ -143,7 +143,6 @@ public class SupplyPile extends JPanel
 			temp = arr[j];
 			arr[j] = arr[i];
 			arr[i] = temp;
-			
 		}
 		return arr;
 	}
@@ -191,6 +190,7 @@ public class SupplyPile extends JPanel
 		}
 		
 	}
+	// Untestable through jUnit
 	public void addListeners()
 	{
 		selectListener = new MouseListener()
@@ -320,12 +320,14 @@ public class SupplyPile extends JPanel
 		};
 	}
 
+	public void selectCard(int sC)
+	{
+		selectCard = sC;
+	}
+
 	public void paintComponent(Graphics page)
 	{
 		super.paintComponent(page);
-		//page.drawCircle(100, 100);
 		page.fillRect(selectX, selectY-10, cardSize_x, cardSize_y + 20);
-		//Rectangle r = new Rectangle(xPos,yPos,width,height);
-		//paint();
 	}	
 }
