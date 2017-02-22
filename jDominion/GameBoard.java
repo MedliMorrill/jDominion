@@ -307,23 +307,9 @@ public class GameBoard extends JPanel
 	{
 		public void actionPerformed(ActionEvent event)
 		{
-			//wait();
-		// if (n == 0)
-		// {
-		// 	add(player[n], BorderLayout.SOUTH);
-		// 	sop("Hello");
-		// }
-		// else
-		// {
-		// 	add(player[n], BorderLayout.NORTH);
-		// }
 			turn();
 			repaint();
-			revalidate();
-			//repaint();
 			sop("Revalidated");
-
-
 		}
 	}
 	// *******************************
@@ -409,5 +395,47 @@ public class GameBoard extends JPanel
 				break;	
 			default :	System.out.println("ACTION DOES NOT EXIST");
 		}
+	}
+	// I used listeners so I got a crap ton of set and get methods for testing purposes
+	// most of the code is outside the listeners so it shouldn't be too big a problem
+	// methods will duplicate the actions of the listener methods and set numbers that
+	//  would otherwise be impossible.
+
+	// Mock GameStartListener
+	public int gameStarter(int nP)
+	{
+		// Initializes the selected players and sets up the game.
+	
+		numPlayers = nP;				
+		player = new Player[numPlayers];
+		//drawPile = new DrawPile[numPlayers];
+		//discardPile = new DiscardPile[numPlayers];
+		soloStartBtn.setVisible(false);
+
+		for(int i = 0; i < numPlayers; i++)
+		{
+			
+
+			playerSetup(i);
+			//player[i] = new Player(drawPile[i], discardPile[i]);
+			
+			
+		}
+		supplySetup();
+		//playerTurn(player[0]);
+		sop("" + getSize());
+		SCALE_X = getWidth()/1920.0;
+		SCALE_Y = getHeight()/1001.0;
+		sop("Width Scale: " + SCALE_X + ", Height Scale: " + SCALE_Y); 
+		// After everything is setup, this puts everything in motion :)
+		GameStart();
+	}
+	// Mock phaseListener
+	// Is called at least 3 times for each turn. Once for each phase
+	public void nextPhase()
+	{
+		turn();
+		repaint();
+		sop("Revalidated");
 	}
 }
