@@ -168,6 +168,7 @@ public class Player extends JPanel
 			sop("Discarding " + card.getName());
 		}
 	}
+	// Player discard Method
 	public Card discard()
 	{
 		Card tempCard = hand.getSelected(selectCard);
@@ -175,6 +176,18 @@ public class Player extends JPanel
 		{
 			// sends the removed card to the discardPile
 			discardPile.discard(hand.removeSelectedCard(selectCard));
+		}
+		// may be null
+		return tempCard;
+	}
+	// AI discard Method
+	public Card discard(int selected)
+	{
+		Card tempCard = hand.getHandIndex(selected);
+		if (tempCard != null)
+		{
+			// sends the removed card to the discardPile
+			discardPile.discard(hand.removeHandIndex(selected));
 		}
 		// may be null
 		return tempCard;
@@ -312,20 +325,47 @@ public class Player extends JPanel
 			public void mouseClicked(MouseEvent e){}
 		};
 	}
-	// A card from 0 to 4. 
+
+	//********************
+	// AI System Methods
+	//********************
+	// NOTE: ALL THESE MAKE AI POSSIBLE WITHOUT LISTENERS
+	//playerHand[index]
+	// A card from 0 to 4. Made for testing the hand system.
 	public void selectCard(int sC)
 	{
 		selectCard = sC;
 	}
-	// Any int
+	// Gets the card in the specified index, like above but functions for all cards
 	public void selectHandIndex(int sHC)
 	{
 		hand.getHandIndex(sHC);
 	}
-	public void removeHandCard()
+	// checks for card existing, if it does then it removes it from the hand and returns it.
+	// Specifically for the ai system.
+	public Card removeHandCard(Card card)
 	{
-
+		Card tempCard = null;
+		int handIndex = hand.getCardIndex(card);
+		if (handIndex != -1)
+		{
+			tempCard = discard(handIndex);
+		}
+		if (tempCard == null)
+		{
+			// the card doesn't exist in the hand
+			return null;
+		}
+		// it was successful
+		return card;
 	}
+	// Checks if card exists, if not then it returns null. 
+	// if it does, it will return the card, 
+	// CAREFUL! Doesn't remove the card from the hand!!!
+	// public Card getHandCard(Card card);
+	// {
+
+	// }
 	// Makes Life Easier
 	public static void sop(String words)
 	{

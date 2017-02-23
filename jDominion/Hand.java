@@ -89,14 +89,18 @@ public class Hand
 		}
 		return null;
 	}
-	// Removes any card, for testing
+	// Removes any card, for AI system
 	// Does not change the images, jUnit doesn't launch the program interface.
-	public void removeHandIndex(int index)
+	// returns the card, if trashed then don't call discard.
+	public Card removeHandIndex(int index)
 	{
+		Card temp = null;
 		if (index < playerHand.length)
 		{
+			temp = playerHand[index];
 			playerHand[index] = null;
 		}
+		return temp;
 	}
 
 	// Removes card for discard or trash
@@ -129,6 +133,17 @@ public class Hand
 	public int getLength()
 	{
 		return playerHand.length;
+	}
+	public int getCardIndex(Card card)
+	{
+		for(int i = 0; i < playerHand.length; i++)
+		{
+			if (playerHand[i] == card)
+			{
+				return i;
+			}
+		}
+		return -1;
 	}
 	public boolean contains(Card card)
 	{
