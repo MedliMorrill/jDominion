@@ -4,6 +4,7 @@ A basic form of Dominion with a GUI, recoded in Java.
 Compile and run Dominion.java
 To compile:
   In jDominion\jDominion, type "javac Dominion.java" with cmd
+  
 To launch:
   In jDominion\jDominion, run "java Dominion" with cmd
 
